@@ -1,12 +1,14 @@
-def find_min_index(arr, start):
-    min_idx = start
-    for i in range(start + 1, len(arr)):
-        if arr[i] < arr[min_idx]:
-            min_idx = i
-    return min_idx
+def min_index(arr, start, n):
+    smallest = arr[start]     
+    pos = start               
+    for j in range(start + 1, n):  
+        if arr[j] < smallest:     
+            smallest = arr[j]
+            pos = j
+    return pos  
 
 def selection_sort(arr):
-    for i in range(len(arr)):
-        min_index = find_min_index(arr, i)
-        if min_index != i:
-            arr[i], arr[min_index] = arr[min_index], arr[i]
+    n = len(arr)
+    for i in range(n - 1):  
+        pos = min_index(arr, i, n)  
+        arr[i], arr[pos] = arr[pos], arr[i]  
